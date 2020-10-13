@@ -2,6 +2,8 @@ import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { IuguService } from './iugu/iugu.service';
 
+import { Client } from './iugu/dto/clients-dto';
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService, private readonly iuguService: IuguService) {}
@@ -28,5 +30,16 @@ export class AppController {
   @Get('/invoices-list')
   async listInvoices(): Promise<any> {
     return await this.iuguService.listInvoices();
+  }
+
+
+  @Get('/client-create')
+  async createClient(): Promise<Client> {
+    return await this.iuguService.createClient({
+      name: 'rilton',
+      email: 'rilton@somosmesha.com',
+      zip_code: '27285230',
+      number: 110
+    })
   }
 }
