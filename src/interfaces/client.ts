@@ -1,5 +1,5 @@
 import { CreateClientDto, Client } from '../iugu/dto/clients-dto';
 
-export default interface ClientI {
+export default interface IClient {
   create: (CreateClientDto) => Promise<Client>;
 }
