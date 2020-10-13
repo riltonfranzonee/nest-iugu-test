@@ -8,6 +8,7 @@ import api from './api';
 
 interface IIuguService {
   createInvoice: (CreateInvoiceDto) => Promise<boolean>;
+  listInvoices: () => any;
 }
 
 @Injectable()
@@ -29,7 +30,7 @@ export class IuguService implements IIuguService {
   };
 
 
-  public async createInvoice(createInvoiceDto: CreateInvoiceDto): Promise<boolean>{
+  public async createInvoice(createInvoiceDto: CreateInvoiceDto): Promise<boolean> {
     const header = this.getAuthHeader();
 
     try {
@@ -37,8 +38,21 @@ export class IuguService implements IIuguService {
 
        return true
     } catch (error) {
-      console.log(error.response.data.errors)
+      console.log(error.response.data.errors);
     }
-    
+  }
+
+  public async listInvoices() {
+    const header = this.getAuthHeader();
+
+
+    try {
+      const { data } = await api.get('/invoices', {headers: { Authorization: header }});
+
+      return data;
+
+    } catch (error) {
+      console.log(error.response.data.errors);
+    }
   }
 }

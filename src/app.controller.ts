@@ -6,7 +6,7 @@ import { IuguService } from './iugu/iugu.service';
 export class AppController {
   constructor(private readonly appService: AppService, private readonly iuguService: IuguService) {}
 
-  @Get()
+  @Get('/invoice-generate')
   async generateInvoice(): Promise<any> {
      await this.iuguService.createInvoice({
       email: 'riltonfranzone@gmail.com',
@@ -23,5 +23,10 @@ export class AppController {
     });
   
     return { hello: 'ok' };
+  }
+
+  @Get('/invoices-list')
+  async listInvoices(): Promise<any> {
+    return await this.iuguService.listInvoices();
   }
 }
