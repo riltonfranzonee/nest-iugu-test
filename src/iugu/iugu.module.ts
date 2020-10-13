@@ -1,10 +1,11 @@
 import { Module, HttpModule } from '@nestjs/common';
 
-import { IuguService } from './iugu.service';
+import { IuguClientService } from './iugu.clients.service';
+import { IuguInvoiceService } from './iugu.invoices.service';
 
 @Module({
   imports: [HttpModule],
-  providers: [IuguService]
+  providers: [IuguInvoiceService, IuguClientService]
 })
 
 export class IuguModule {}
