@@ -9,13 +9,13 @@ import { Client } from './iugu/dto/clients-dto';
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    private readonly iuguClientService: IuguClientService,
-    private readonly iuguInvoiceService: IuguInvoiceService
+    private readonly clientService: IuguClientService,
+    private readonly invoiceService: IuguInvoiceService
     ) {}
 
   @Get('/invoice-generate')
   async generateInvoice(): Promise<any> {
-     await this.iuguInvoiceService.create({
+     await this.invoiceService.create({
       email: 'riltonfranzone@gmail.com',
       due_date: new Date(),
       items: [{ description: 'new invoice', quantity: 1, price_cents: 10000 }],
@@ -34,13 +34,13 @@ export class AppController {
 
   @Get('/invoices-list')
   async listInvoices(): Promise<any> {
-    return await this.iuguInvoiceService.listAll();
+    return await this.invoiceService.listAll();
   }
 
 
   @Get('/client-create')
   async createClient(): Promise<Client> {
-    return await this.iuguClientService.create({
+    return await this.clientService.create({
       name: 'rilton',
       email: 'rilton@somosmesha.com',
       zip_code: '27285230',
