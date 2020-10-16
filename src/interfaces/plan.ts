@@ -1,6 +1,6 @@
 import { CreatePlanDto } from '../iugu/dto/plans-dto';
 
-export default interface IInvoice {
+export default interface IPlan {
   create: (createPlanDto: CreatePlanDto) => Promise<any>;
-  listAll: () => any;
+  findAll: () => any;
 }

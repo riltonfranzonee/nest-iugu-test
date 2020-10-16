@@ -19,3 +19,19 @@ export class CreateSubscriptionDto {
 
   readonly only_charge_on_due_date?: boolean;
 }
+
+export class Subscription extends CreateSubscriptionDto {
+  readonly suspended: boolean;
+
+  readonly active: boolean;
+
+  readonly in_trial?: boolean | null;
+
+  readonly plan_name: string;
+
+  readonly customer_name: string;
+
+  readonly customer_email: string;
+
+  readonly cycled_at: string;
+}

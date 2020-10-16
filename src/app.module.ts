@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 import { IuguInvoiceService } from './iugu/iugu.invoices.service';
 import { IuguPlanService } from './iugu/iugu.plans.service';
-import { IuguClientService } from './iugu/iugu.clients.service';
+import { IuguCustomerService } from './iugu/iugu.customers.service';
 import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
 import { IuguModule } from './iugu/iugu.module';
 
@@ -14,7 +14,7 @@ import { IuguModule } from './iugu/iugu.module';
   controllers: [AppController],
   providers: [
     AppService,
-    IuguClientService,
+    IuguCustomerService,
     IuguInvoiceService,
     IuguPlanService,
     IuguSubscriptionService,

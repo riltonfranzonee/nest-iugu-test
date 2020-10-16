@@ -1,17 +1,18 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { IuguClientService } from './iugu/iugu.clients.service';
+import { IuguCustomerService } from './iugu/iugu.customers.service';
 import { IuguInvoiceService } from './iugu/iugu.invoices.service';
 import { IuguPlanService } from './iugu/iugu.plans.service';
 import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
 
-import { Client } from './iugu/dto/clients-dto';
+import { Customer } from './iugu/dto/customers-dto';
+import { Subscription } from './iugu/dto/subscriptions-dto';
 
 @Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    private readonly clientService: IuguClientService,
+    private readonly customerService: IuguCustomerService,
     private readonly invoiceService: IuguInvoiceService,
     private readonly planService: IuguPlanService,
     private readonly subscriptionService: IuguSubscriptionService,
@@ -38,12 +39,12 @@ export class AppController {
 
   @Get('/invoices-list')
   async listInvoices(): Promise<any> {
-    return await this.invoiceService.listAll();
+    return await this.invoiceService.findAll();
   }
 
-  @Get('/client-create')
-  async createClient(): Promise<Client> {
-    return await this.clientService.create({
+  @Get('/Customer-create')
+  async createCustomer(): Promise<Customer> {
+    return await this.customerService.create({
       name: 'rilton',
       email: 'rilton@somosmesha.com',
       zip_code: '27285230',
@@ -51,9 +52,9 @@ export class AppController {
     });
   }
 
-  @Get('/client-list')
-  async listClients(): Promise<any> {
-    return await this.clientService.listAll();
+  @Get('/Customer-list')
+  async listCustomers(): Promise<any> {
+    return await this.customerService.findAll();
   }
 
   @Get('/plan-create')
@@ -71,11 +72,11 @@ export class AppController {
 
   @Get('/plans-list')
   async listPlans(): Promise<any> {
-    return await this.invoiceService.listAll();
+    return await this.invoiceService.findAll();
   }
 
   @Get('/subscription-create')
-  async createSubscription(): Promise<any> {
+  async createSubscription(): Promise<Subscription> {
     const subscription = await this.subscriptionService.create({
       customer_id: '9A330DC6E3324F76B3783021F26217B1',
       plan_identifier: 'test-plan-1',
@@ -85,7 +86,7 @@ export class AppController {
   }
 
   @Get('/subscriptions-list')
-  async listSubscriptions(): Promise<any> {
-    return await this.subscriptionService.listAll();
+  async listSubscriptions(): Promise<Subscription[]> {
+    return await this.subscriptionService.findAll();
   }
 }

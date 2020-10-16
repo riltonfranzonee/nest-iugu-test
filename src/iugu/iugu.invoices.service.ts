@@ -18,7 +18,7 @@ export class IuguInvoiceService implements IInvoice {
     }
   }
 
-  public async listAll(): Promise<any> {
+  public async findAll(): Promise<any[]> {
     try {
       const { data } = await api.get('/invoices');
 
