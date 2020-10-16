@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateInvoiceDto } from './dto/invoices-dto';
+import { CreatePlanDto } from './dto/plans-dto';
 
-import IInvoice from '../interfaces/invoice';
+import IPlan from '../interfaces/plan';
 
 import api from './api';
 
 @Injectable()
-export class IuguInvoiceService implements IInvoice {
-  public async create(createInvoiceDto: CreateInvoiceDto): Promise<boolean> {
+export class IuguPlanService implements IPlan {
+  public async create(createPlanDto: CreatePlanDto): Promise<any> {
     try {
-      await api.post('/invoices', createInvoiceDto);
+      const { data } = await api.post('/plans', createPlanDto);
 
-      return true;
+      return data;
     } catch (error) {
       console.log(error.response.data.errors);
     }
@@ -20,7 +20,7 @@ export class IuguInvoiceService implements IInvoice {
 
   public async listAll(): Promise<any> {
     try {
-      const { data } = await api.get('/invoices');
+      const { data } = await api.get('/plans');
 
       return data;
     } catch (error) {

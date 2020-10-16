@@ -1,6 +1,6 @@
 import { CreateInvoiceDto } from '../iugu/dto/invoices-dto';
 
 export default interface IInvoice {
-  create: (CreateInvoiceDto) => Promise<boolean>;
+  create: (createInvoiceDto: CreateInvoiceDto) => Promise<boolean>;
   listAll: () => any;
 }

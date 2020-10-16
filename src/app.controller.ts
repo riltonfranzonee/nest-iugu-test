@@ -2,6 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { IuguClientService } from './iugu/iugu.clients.service';
 import { IuguInvoiceService } from './iugu/iugu.invoices.service';
+import { IuguPlanService } from './iugu/iugu.plans.service';
 
 import { Client } from './iugu/dto/clients-dto';
 
@@ -11,6 +12,7 @@ export class AppController {
     private readonly appService: AppService,
     private readonly clientService: IuguClientService,
     private readonly invoiceService: IuguInvoiceService,
+    private readonly planService: IuguPlanService,
   ) {}
 
   @Get('/invoice-generate')
@@ -45,5 +47,23 @@ export class AppController {
       zip_code: '27285230',
       number: 110,
     });
+  }
+
+  @Get('/create-plan')
+  async createPlan(): Promise<any> {
+    const plan = await this.planService.create({
+      name: 'Teste',
+      identifier: 'test-plan-1',
+      interval: 1,
+      interval_type: 'months',
+      value_cents: 10000,
+    });
+
+    return plan;
+  }
+
+  @Get('/plans-list')
+  async listPlans(): Promise<any> {
+    return await this.invoiceService.listAll();
   }
 }

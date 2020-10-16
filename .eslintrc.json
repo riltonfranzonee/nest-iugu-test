@@ -40,7 +40,8 @@
     "no-useless-constructor": "off",
     "no-return-await": "off",
     "consistent-return": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "max-classes-per-file": "off"
   },
   "settings": {
     "import/resolver": {
