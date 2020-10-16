@@ -17,4 +17,14 @@ export class IuguClientService implements IClient {
       console.log(error.response.data.errors);
     }
   }
+
+  public async listAll(): Promise<Client[]> {
+    try {
+      const { data } = await api.get('/customers');
+
+      return data;
+    } catch (error) {
+      console.log(error.response.data.errors);
+    }
+  }
 }

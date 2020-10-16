@@ -6,6 +6,7 @@ import { TodosModule } from './todos/todos.module';
 import { IuguInvoiceService } from './iugu/iugu.invoices.service';
 import { IuguPlanService } from './iugu/iugu.plans.service';
 import { IuguClientService } from './iugu/iugu.clients.service';
+import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
 import { IuguModule } from './iugu/iugu.module';
 
 @Module({
@@ -16,6 +17,7 @@ import { IuguModule } from './iugu/iugu.module';
     IuguClientService,
     IuguInvoiceService,
     IuguPlanService,
+    IuguSubscriptionService,
   ],
 })
 export class AppModule {}

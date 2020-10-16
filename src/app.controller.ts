@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { IuguClientService } from './iugu/iugu.clients.service';
 import { IuguInvoiceService } from './iugu/iugu.invoices.service';
 import { IuguPlanService } from './iugu/iugu.plans.service';
+import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
 
 import { Client } from './iugu/dto/clients-dto';
 
@@ -13,6 +14,7 @@ export class AppController {
     private readonly clientService: IuguClientService,
     private readonly invoiceService: IuguInvoiceService,
     private readonly planService: IuguPlanService,
+    private readonly subscriptionService: IuguSubscriptionService,
   ) {}
 
   @Get('/invoice-generate')
@@ -49,7 +51,12 @@ export class AppController {
     });
   }
 
-  @Get('/create-plan')
+  @Get('/client-list')
+  async listClients(): Promise<any> {
+    return await this.clientService.listAll();
+  }
+
+  @Get('/plan-create')
   async createPlan(): Promise<any> {
     const plan = await this.planService.create({
       name: 'Teste',
@@ -65,5 +72,20 @@ export class AppController {
   @Get('/plans-list')
   async listPlans(): Promise<any> {
     return await this.invoiceService.listAll();
+  }
+
+  @Get('/subscription-create')
+  async createSubscription(): Promise<any> {
+    const subscription = await this.subscriptionService.create({
+      customer_id: '9A330DC6E3324F76B3783021F26217B1',
+      plan_identifier: 'test-plan-1',
+    });
+
+    return subscription;
+  }
+
+  @Get('/subscriptions-list')
+  async listSubscriptions(): Promise<any> {
+    return await this.subscriptionService.listAll();
   }
 }
