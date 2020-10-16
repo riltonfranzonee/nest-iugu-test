@@ -10,12 +10,12 @@ export class AppController {
   constructor(
     private readonly appService: AppService,
     private readonly clientService: IuguClientService,
-    private readonly invoiceService: IuguInvoiceService
-    ) {}
+    private readonly invoiceService: IuguInvoiceService,
+  ) {}
 
   @Get('/invoice-generate')
   async generateInvoice(): Promise<any> {
-     await this.invoiceService.create({
+    await this.invoiceService.create({
       email: 'riltonfranzone@gmail.com',
       due_date: new Date(),
       items: [{ description: 'new invoice', quantity: 1, price_cents: 10000 }],
@@ -24,11 +24,11 @@ export class AppController {
         cpf_cnpj: '12581083727',
         address: {
           zip_code: '27285230',
-          number: 110
-        }
-      }
+          number: 110,
+        },
+      },
     });
-  
+
     return { hello: 'ok' };
   }
 
@@ -37,7 +37,6 @@ export class AppController {
     return await this.invoiceService.listAll();
   }
 
-
   @Get('/client-create')
   async createClient(): Promise<Client> {
     return await this.clientService.create({
@@ -45,6 +44,6 @@ export class AppController {
       email: 'rilton@somosmesha.com',
       zip_code: '27285230',
       number: 110,
-    })
+    });
   }
 }

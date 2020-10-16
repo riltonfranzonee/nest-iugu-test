@@ -5,7 +5,6 @@ import { IuguInvoiceService } from './iugu.invoices.service';
 
 @Module({
   imports: [HttpModule],
-  providers: [IuguInvoiceService, IuguClientService]
+  providers: [IuguInvoiceService, IuguClientService],
 })
-
 export class IuguModule {}
