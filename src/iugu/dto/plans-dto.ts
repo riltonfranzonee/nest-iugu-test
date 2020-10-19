@@ -6,6 +6,16 @@ class Feature {
   readonly value: number;
 }
 
+class Price {
+  readonly currency: string;
+
+  readonly id: string;
+
+  readonly plan_id: string;
+
+  readonly value_cents: string;
+}
+
 export class CreatePlanDto {
   readonly name: string;
 
@@ -24,4 +34,24 @@ export class CreatePlanDto {
   readonly max_cycles?: number;
 
   readonly features?: Feature[];
+}
+
+export class Plan {
+  readonly id: string;
+
+  readonly name: string;
+
+  readonly identifier: string;
+
+  readonly interval: number;
+
+  readonly interval_type: 'weeks' | 'months';
+
+  readonly features: Feature[];
+
+  readonly prices: Price[];
+
+  readonly created_at: string;
+
+  readonly updated_at: string;
 }

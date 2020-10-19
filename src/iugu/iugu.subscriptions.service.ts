@@ -42,7 +42,7 @@ export class IuguSubscriptionService implements ISubscription {
 
       return data;
     } catch (err) {
-      console.log(err.response.data.errors);
+      console.log(err.request);
     }
   }
 

@@ -1,4 +1,5 @@
 import { Module, HttpModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -10,7 +11,15 @@ import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
 import { IuguModule } from './iugu/iugu.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), TodosModule, IuguModule, HttpModule],
+  imports: [
+    TypeOrmModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TodosModule,
+    IuguModule,
+    HttpModule,
+  ],
   controllers: [AppController],
   providers: [
     AppService,
