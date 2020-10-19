@@ -24,24 +24,26 @@ export class CreateTokenDto {
   readonly test?: boolean;
 }
 
+export class CardInfo {
+  readonly brand: string;
+
+  readonly holder_name: string;
+
+  readonly display_number: string;
+
+  readonly bin: string;
+
+  readonly month: number;
+
+  readonly year: number;
+}
+
 export class Token {
   readonly id: string;
 
   readonly method: 'credit_card';
 
-  readonly extra_info: {
-    brand: string;
-
-    holder_name: string;
-
-    display_number: string;
-
-    bin: string;
-
-    month: number;
-
-    year: number;
-  };
+  readonly extra_info: CardInfo;
 
   readonly test: boolean;
 }

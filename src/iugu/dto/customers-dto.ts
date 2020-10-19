@@ -1,3 +1,5 @@
+import { CardInfo, Token } from './tokens-dto';
+
 export class CreateCustomerDto {
   readonly email: string;
 
@@ -28,4 +30,30 @@ export class Customer extends CreateCustomerDto {
   readonly district: string;
 
   readonly payment_methods: any;
+}
+
+export class CreatePaymentMethodDto {
+  readonly description: string;
+
+  readonly token: Token;
+
+  readonly set_as_default?: boolean;
+}
+
+export class UpdatePaymentMethodDto {
+  readonly description: string;
+
+  readonly customer_id: string;
+
+  readonly id: string;
+}
+
+export class PaymentMethod {
+  readonly id: string;
+
+  readonly description: string;
+
+  readonly item_type: string;
+
+  readonly data: CardInfo;
 }
