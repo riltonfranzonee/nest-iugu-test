@@ -7,7 +7,7 @@ export default interface IInvoice {
   create: (createInvoiceDto: CreateInvoiceDto) => Promise<boolean>;
   regenerate: (
     id: string,
-    regenrateInvoiceDto: RegenerateInvoiceDto,
+    regenerateInvoiceDto: RegenerateInvoiceDto,
   ) => Promise<boolean>;
   cancel: (id: string) => Promise<boolean>;
   sendEmail: (id: string) => Promise<boolean>;
