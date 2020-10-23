@@ -9,16 +9,23 @@ import { IuguPlanService } from './iugu/iugu.plans.service';
 import { IuguCustomerService } from './iugu/iugu.customers.service';
 import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
 import { IuguModule } from './iugu/iugu.module';
+import { CitiesModule } from './cities/cities.module';
+import { StatesService, StateRepository } from './states/states.service';
+import { CitiesService, CityRepository } from './cities/cities.service';
+import { StatesModule } from './states/states.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
+    TypeOrmModule.forFeature([StateRepository, CityRepository]),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
     TodosModule,
     IuguModule,
     HttpModule,
+    CitiesModule,
+    StatesModule,
   ],
   controllers: [AppController],
   providers: [
@@ -27,6 +34,8 @@ import { IuguModule } from './iugu/iugu.module';
     IuguInvoiceService,
     IuguPlanService,
     IuguSubscriptionService,
+    StatesService,
+    CitiesService,
   ],
 })
 export class AppModule {}

@@ -41,7 +41,8 @@
     "no-return-await": "off",
     "consistent-return": "off",
     "no-console": "off",
-    "max-classes-per-file": "off"
+    "max-classes-per-file": "off",
+    "@typescript-eslint/no-var-requires": "off"
   },
   "settings": {
     "import/resolver": {

@@ -4,6 +4,8 @@ import { IuguCustomerService } from './iugu/iugu.customers.service';
 import { IuguInvoiceService } from './iugu/iugu.invoices.service';
 import { IuguPlanService } from './iugu/iugu.plans.service';
 import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
+import { StatesService } from './states/states.service';
+import { CitiesService } from './cities/cities.service';
 
 import { Customer } from './iugu/dto/customers-dto';
 import { Subscription } from './iugu/dto/subscriptions-dto';
@@ -16,6 +18,8 @@ export class AppController {
     private readonly invoiceService: IuguInvoiceService,
     private readonly planService: IuguPlanService,
     private readonly subscriptionService: IuguSubscriptionService,
+    private readonly statesService: StatesService,
+    private readonly citiesService: CitiesService,
   ) {}
 
   @Get('/invoice-generate')
@@ -88,5 +92,15 @@ export class AppController {
   @Get('/subscriptions-list')
   async listSubscriptions(): Promise<Subscription[]> {
     return await this.subscriptionService.findAll();
+  }
+
+  @Get('/import-states')
+  async importStates(): Promise<void> {
+    await this.statesService.importStates();
+  }
+
+  @Get('/import-cities')
+  async importCities(): Promise<void> {
+    await this.citiesService.importCities();
   }
 }
