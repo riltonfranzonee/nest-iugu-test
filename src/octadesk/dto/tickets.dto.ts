@@ -23,6 +23,10 @@ export class CreateTicketDto {
 
   readonly requester?: Requester;
 
+  readonly summary?: string;
+
+  readonly description?: string;
+
   readonly comments?: {
     description?: Comment;
     internal?: Comment;
