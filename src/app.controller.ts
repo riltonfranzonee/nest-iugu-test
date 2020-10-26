@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { IuguCustomerService } from './iugu/iugu.customers.service';
 import { IuguInvoiceService } from './iugu/iugu.invoices.service';
@@ -6,9 +6,11 @@ import { IuguPlanService } from './iugu/iugu.plans.service';
 import { IuguSubscriptionService } from './iugu/iugu.subscriptions.service';
 import { StatesService } from './states/states.service';
 import { CitiesService } from './cities/cities.service';
+import { TicketService } from './octadesk/ticket.service';
 
 import { Customer } from './iugu/dto/customers-dto';
 import { Subscription } from './iugu/dto/subscriptions-dto';
+import { CreateTicketDto } from './octadesk/dto/tickets.dto';
 
 @Controller()
 export class AppController {
@@ -20,6 +22,7 @@ export class AppController {
     private readonly subscriptionService: IuguSubscriptionService,
     private readonly statesService: StatesService,
     private readonly citiesService: CitiesService,
+    private readonly ticketService: TicketService,
   ) {}
 
   @Get('/invoice-generate')
@@ -102,5 +105,12 @@ export class AppController {
   @Get('/import-cities')
   async importCities(): Promise<void> {
     await this.citiesService.importCities();
+  }
+
+  @Post('/create-ticket')
+  async createTicket(@Body() data: CreateTicketDto): Promise<any> {
+    const res = await this.ticketService.create(data);
+
+    return res;
   }
 }

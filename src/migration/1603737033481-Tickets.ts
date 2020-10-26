@@ -34,6 +34,7 @@ export class Tickets1603737033481 implements MigrationInterface {
         name: 'tickets',
         columns: [
           { name: 'ticketNum', type: 'integer' },
+          { name: 'title', type: 'varchar' },
           { name: 'userId', type: 'uuid' },
         ],
       }),

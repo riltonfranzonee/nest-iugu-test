@@ -14,11 +14,18 @@ import { StatesService, StateRepository } from './states/states.service';
 import { CitiesService, CityRepository } from './cities/cities.service';
 import { StatesModule } from './states/states.module';
 import { OctadeskModule } from './octadesk/octadesk.module';
+import { TicketService } from './octadesk/ticket.service';
+import { TicketRepository, UserRepository } from './octadesk/ticket.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
-    TypeOrmModule.forFeature([StateRepository, CityRepository]),
+    TypeOrmModule.forFeature([
+      StateRepository,
+      CityRepository,
+      TicketRepository,
+      UserRepository,
+    ]),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -37,6 +44,7 @@ import { OctadeskModule } from './octadesk/octadesk.module';
     IuguPlanService,
     IuguSubscriptionService,
     StatesService,
+    TicketService,
     CitiesService,
   ],
 })
