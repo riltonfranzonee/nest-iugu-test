@@ -62,13 +62,11 @@ export class AddCityState1603478338286 implements MigrationInterface {
           },
           {
             name: 'codigoIBGE',
-            type: 'varchar',
-            length: '6',
+            type: 'integer',
           },
           {
             name: 'codigoIBGE7',
-            type: 'varchar',
-            length: '7',
+            type: 'integer',
           },
         ],
       }),

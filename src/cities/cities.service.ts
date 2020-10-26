@@ -11,8 +11,8 @@ const Excel = require('exceljs');
 interface ICity {
   nome: string;
   estado: State;
-  codigoIBGE: string;
-  codigoIBGE7: string;
+  codigoIBGE: number;
+  codigoIBGE7: number;
 }
 
 @EntityRepository(City)
@@ -29,7 +29,7 @@ export class CitiesService {
   public async importCities(): Promise<void> {
     const workbook = new Excel.Workbook();
 
-    await workbook.xlsx.readFile(`${__dirname}/lista.xlsx`);
+    await workbook.xlsx.readFile(`${__dirname}/../../lista.xlsx`);
 
     const worksheet = await workbook.getWorksheet('cidades');
 
@@ -45,8 +45,8 @@ export class CitiesService {
       const city: ICity = {
         nome: row.getCell(1).text,
         estado: state,
-        codigoIBGE: row.getCell(2).text.toString(),
-        codigoIBGE7: row.getCell(3).text.toString(),
+        codigoIBGE: row.getCell(2).text,
+        codigoIBGE7: row.getCell(3).text,
       };
 
       await this.cityRepository.insert(city);

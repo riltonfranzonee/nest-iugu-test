@@ -13,8 +13,8 @@ export class City {
   estado: State;
 
   @Column()
-  codigoIBGE: string;
+  codigoIBGE: number;
 
   @Column()
-  codigoIBGE7: string;
+  codigoIBGE7: number;
 }

@@ -25,7 +25,7 @@ export class StatesService {
   public async importStates(): Promise<void> {
     const workbook = new Excel.Workbook();
 
-    await workbook.xlsx.readFile(`${__dirname}/lista.xlsx`);
+    await workbook.xlsx.readFile(`${__dirname}/../../lista.xlsx`);
 
     const worksheet = await workbook.getWorksheet('estados');
 
