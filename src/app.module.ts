@@ -13,6 +13,7 @@ import { CitiesModule } from './cities/cities.module';
 import { StatesService, StateRepository } from './states/states.service';
 import { CitiesService, CityRepository } from './cities/cities.service';
 import { StatesModule } from './states/states.module';
+import { OctadeskModule } from './octadesk/octadesk.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { StatesModule } from './states/states.module';
     HttpModule,
     CitiesModule,
     StatesModule,
+    OctadeskModule,
   ],
   controllers: [AppController],
   providers: [
